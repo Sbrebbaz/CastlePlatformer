@@ -3,10 +3,11 @@ using System;
 
 public partial class PlayableCharacter : CharacterBody2D
 {
-	public const float WalkSpeed = 50f;
-	public const float BaseSpeed = 200f;
-	public const float RunSpeed = 400f;
-	public const float JumpVelocity = -400.0f;
+	public float WalkSpeed = 50f;
+	public float BaseSpeed = 200f;
+	public float RunSpeed = 400f;
+	public float JumpVelocity = -400.0f;
+	public float EnemyBounceVelocity = -200.0f;
 
 	private bool _IsDead = false;
 
@@ -66,7 +67,7 @@ public partial class PlayableCharacter : CharacterBody2D
 				&& IsOnFloor()
 				)
 			{
-				velocity.Y = JumpVelocity;
+				velocity.Y += JumpVelocity;
 				AnimatedSprite2D.Play("Jump");
 			}
 

@@ -215,7 +215,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gbdrb")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -305,13 +305,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2oes"]
 size = Vector2(16, 18)
 
-[node name="Knight_1" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2kbjt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_0su2u")
-animation = &"Attack"
+animation = &"Death"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

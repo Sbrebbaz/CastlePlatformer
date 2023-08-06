@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://lnmpjb77fkm5"]
+
+[ext_resource type="Script" path="res://Scripts/Consumable.cs" id="1_1ahar"]
+[ext_resource type="Texture2D" uid="uid://c8vvp5v2e7ye" path="res://Assets/Coin_Gems/spr_coin_strip4.png" id="2_dopqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da0ao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcquk"]
+atlas = ExtResource("2_dopqd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2v78"]
+atlas = ExtResource("2_dopqd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo4d5"]
+atlas = ExtResource("2_dopqd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvkma"]
+atlas = ExtResource("2_dopqd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2846e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcquk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2v78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo4d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvkma")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="GreenGem" type="Area2D"]
+script = ExtResource("1_1ahar")
+metadata/Value = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_da0ao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2846e")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.858118
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

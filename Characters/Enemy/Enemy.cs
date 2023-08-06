@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class Skeleton : CharacterBody2D
+public partial class Enemy : CharacterBody2D
 {
 	public bool IsDead = false;
 	public bool IsAttacking = false;
@@ -10,7 +10,7 @@ public partial class Skeleton : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public AnimatedSprite2D AnimatedSprite2D;
-	public Node2D Player;
+	public PlayableCharacter Player;
 	public Vector2 StartingPosition;
 
 	public override void _Ready()
@@ -39,7 +39,6 @@ public partial class Skeleton : CharacterBody2D
 				if (IsAttacking)
 				{
 					AnimatedSprite2D.Play("Attack");
-					//direction = (Player.Position - this.Position).Normalized();
 				}
 				else
 				{
@@ -87,7 +86,7 @@ public partial class Skeleton : CharacterBody2D
 	{
 		if (body.Name == "Player")
 		{
-			Player = body;
+			Player = (PlayableCharacter)body;
 		}
 	}
 
@@ -102,11 +101,16 @@ public partial class Skeleton : CharacterBody2D
 
 	private void _on_kill_detection_body_entered(Node2D body)
 	{
-		if (body.Name == "Player")
+		if (body.Name == "Player" && !IsDead)
 		{
 			IsAttacking = false;
 			IsDead = true;
 			GetNode<CollisionShape2D>("Hitbox").SetDeferred("disabled", true);
+
+
+			Vector2 velocity = Velocity;
+			velocity.Y += Player.EnemyBounceVelocity;
+			Player.Velocity = velocity;
 		}
 	}
 
@@ -135,5 +139,16 @@ public partial class Skeleton : CharacterBody2D
 		}
 	}
 
+	private void _on_animated_sprite_2d_frame_changed()
+	{
+		if (IsAttacking
+			&& !IsDead
+			&& Player != null
+			&& AnimatedSprite2D.Animation == "Attack"
+			&& AnimatedSprite2D.Frame == 3)
+		{
+			Player.SetDeferred("IsDead", true);
+		}
+	}
 
 }

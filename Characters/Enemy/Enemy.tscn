@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://c7btebqnuvrqc"]
 
-[ext_resource type="Script" path="res://Characters/Skeleton/Enemy.cs" id="1_rloed"]
+[ext_resource type="Script" path="res://Characters/Enemy/Enemy.cs" id="1_r5qe3"]
 [ext_resource type="Texture2D" uid="uid://donibdseo661e" path="res://Assets/Knight/16x16 knight 3 v3.png" id="4_ptn8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhpda"]
@@ -250,10 +250,10 @@ radius = 136.015
 size = Vector2(15, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkenj"]
-size = Vector2(52, 22)
+size = Vector2(38, 22)
 
 [node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_rloed")
+script = ExtResource("1_r5qe3")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 5)
@@ -261,8 +261,9 @@ shape = SubResource("RectangleShape2D_bhpda")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pcucu")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
+frame = 3
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 visible = false
@@ -286,6 +287,7 @@ shape = SubResource("RectangleShape2D_rkenj")
 debug_color = Color(0.592157, 0.545098, 0, 0.419608)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="KillDetection" to="." method="_on_kill_detection_body_entered"]

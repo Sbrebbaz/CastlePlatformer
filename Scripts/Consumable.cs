@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Consumable : Area2D
 {
@@ -7,14 +8,13 @@ public partial class Consumable : Area2D
 	{
 		if (body.Name == "Player")
 		{
-
-			BaseLevel.CoinCounter += 1;
+			BaseLevel.CoinCounter += (int)GetMeta("Value");
 
 			Tween tweenPosition = GetTree().CreateTween();
 			Tween tweenTransparency = GetTree().CreateTween();
 
-			tweenPosition.TweenProperty(this, "position", Position - new Vector2(0, 25), 0.15f);
-			tweenTransparency.TweenProperty(this, "modulate:a", 0, 0.15f);
+			tweenPosition.TweenProperty(this, "position", Position - new Vector2(0, 25), 0.2f);
+			tweenTransparency.TweenProperty(this, "modulate:a", 0, 0.2f);
 
 			tweenPosition.Finished += TweenPosition_Finished;
 		}
