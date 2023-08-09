@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [node name="YellowGem" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_q6yd1")
 metadata/Value = 50
 

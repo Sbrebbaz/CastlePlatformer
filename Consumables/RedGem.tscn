@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [node name="RedGem" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_kkbue")
 metadata/Value = 250
 

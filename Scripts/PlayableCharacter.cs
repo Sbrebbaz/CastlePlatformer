@@ -127,6 +127,3 @@ public partial class PlayableCharacter : CharacterBody2D
 		GetTree().ChangeSceneToFile("res://DeathScreen.tscn");
 	}
 }
-
-
-

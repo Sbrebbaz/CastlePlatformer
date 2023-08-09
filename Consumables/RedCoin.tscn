@@ -49,6 +49,7 @@ animations = [{
 }]
 
 [node name="RedCoin" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_mkmn2")
 metadata/Value = 5
 

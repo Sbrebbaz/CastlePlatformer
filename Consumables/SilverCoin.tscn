@@ -49,6 +49,7 @@ animations = [{
 }]
 
 [node name="SilverCoin" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_52733")
 metadata/Value = 1
 

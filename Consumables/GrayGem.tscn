@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [node name="GreyGem" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_v15fu")
 metadata/Value = 10
 

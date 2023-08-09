@@ -49,6 +49,7 @@ animations = [{
 }]
 
 [node name="GoldCoin" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_eq0uw")
 metadata/Value = 3
 

@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [node name="AzureGem" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_j3i3y")
 metadata/Value = 25
 
