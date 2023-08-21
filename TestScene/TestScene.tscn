@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cc16r1t1krhb7"]
+[gd_scene load_steps=19 format=3 uid="uid://cc16r1t1krhb7"]
 
 [ext_resource type="Texture2D" uid="uid://wq8ajtvuw14x" path="res://Assets/Dungeon Tile Set/Dungeon Tile Set.png" id="1_k4xtl"]
 [ext_resource type="PackedScene" uid="uid://0t7gwsfhdf6j" path="res://Characters/Knight/Knight_1/Player.tscn" id="2_1cjg6"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://byt2yinltnldg" path="res://Consumables/SilverCoin.tscn" id="12_8qvub"]
 [ext_resource type="PackedScene" uid="uid://3fi11owawrn6" path="res://Consumables/YellowGem.tscn" id="13_wiwrm"]
 [ext_resource type="Script" path="res://TestScene/BombSpawner.cs" id="15_fixll"]
+[ext_resource type="PackedScene" uid="uid://br38qa2e3nvu8" path="res://Characters/BreakableWalls/BreakableWall.tscn" id="15_wn8qg"]
+[ext_resource type="PackedScene" uid="uid://cewaecbv0cw61" path="res://Trampoline.tscn" id="16_l84gl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kberm"]
 texture = ExtResource("1_k4xtl")
@@ -501,16 +503,28 @@ position = Vector2(216, 480)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("6_ikmr1")]
-position = Vector2(416, 472)
+position = Vector2(576, 472)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_ikmr1")]
-position = Vector2(536, 472)
+position = Vector2(696, 472)
 
 [node name="Enemy" parent="." instance=ExtResource("6_ikmr1")]
-position = Vector2(720, 472)
+position = Vector2(880, 472)
 
 [node name="Bombs" type="Node" parent="."]
 script = ExtResource("15_fixll")
 
 [node name="Player" parent="." instance=ExtResource("2_1cjg6")]
 position = Vector2(32, 480)
+
+[node name="BreakableWall" parent="." instance=ExtResource("15_wn8qg")]
+position = Vector2(320, 480)
+
+[node name="BreakableWall2" parent="." instance=ExtResource("15_wn8qg")]
+position = Vector2(320, 448)
+
+[node name="BreakableWall3" parent="." instance=ExtResource("15_wn8qg")]
+position = Vector2(320, 416)
+
+[node name="Trampoline" parent="." instance=ExtResource("16_l84gl")]
+position = Vector2(400, 504)

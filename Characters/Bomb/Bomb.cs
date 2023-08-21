@@ -25,13 +25,13 @@ public partial class Bomb : CharacterBody2D
 
 		foreach (Node2D node2D in ExplosionArea.GetOverlappingBodies().ToList())
 		{
-			if (node2D.GetType() == typeof(Enemy))
+			if (node2D is Killable)
 			{
-				((Enemy)node2D).IsDead = true;
+				((Killable)node2D).Kill();
 			}
-			else if (node2D.GetType() == typeof(PlayableCharacter))
+			else if (node2D is Breakable)
 			{
-				((PlayableCharacter)node2D).IsDead = true;
+				((Breakable)node2D).Break();
 			}
 			else
 			{

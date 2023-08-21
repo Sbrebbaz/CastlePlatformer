@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class Enemy : CharacterBody2D
+public partial class Enemy : CharacterBody2D, Killable
 {
 	public bool IsDead = false;
 	public bool IsAttacking = false;
@@ -151,4 +151,8 @@ public partial class Enemy : CharacterBody2D
 		}
 	}
 
+	public void Kill()
+	{
+		IsDead = true;
+	}
 }

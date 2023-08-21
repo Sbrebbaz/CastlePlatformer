@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayableCharacter : CharacterBody2D
+public partial class PlayableCharacter : CharacterBody2D, Killable
 {
 	public float WalkSpeed = 50f;
 	public float BaseSpeed = 200f;
@@ -125,5 +125,10 @@ public partial class PlayableCharacter : CharacterBody2D
 	private void _on_tree_exiting()
 	{
 		GetTree().ChangeSceneToFile("res://DeathScreen.tscn");
+	}
+
+	public void Kill()
+	{
+		IsDead = true;
 	}
 }
