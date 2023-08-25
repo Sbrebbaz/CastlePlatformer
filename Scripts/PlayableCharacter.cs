@@ -1,12 +1,32 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class PlayableCharacter : CharacterBody2D, Killable
 {
 	public float WalkSpeed = 50f;
 	public float BaseSpeed = 200f;
 	public float RunSpeed = 400f;
-	public float JumpVelocity = -400.0f;
+
+	public float JumpVelocityBase = -400.0f;
+
+	public float JumpVelocity
+	{
+		get
+		{
+			return JumpVelocityBase * GravityModifier;
+
+		}
+	}
+
+	public int GravityModifier
+	{
+		get
+		{
+			return (BaseLevel.Gravity > 0) ? 1 : -1;
+		}
+	}
+
 	public float EnemyBounceVelocity = -200.0f;
 
 	private bool _IsDead = false;
@@ -24,9 +44,6 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 		}
 	}
 
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
 	public AnimatedSprite2D AnimatedSprite2D;
 
 	public override void _Ready()
@@ -42,6 +59,22 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			Vector2 velocity = Velocity;
 			float movementSpeed = BaseSpeed;
 
+			switch (GravityModifier)
+			{
+				case > 0:
+					{
+						AnimatedSprite2D.FlipV = false;
+						UpDirection = new Vector2(0, -1);
+						break;
+					}
+				case < 0:
+					{
+						AnimatedSprite2D.FlipV = true;
+						UpDirection = new Vector2(0, 1);
+						break;
+					}
+			}
+
 			if (Input.IsActionPressed("ui_run"))
 			{
 				movementSpeed = RunSpeed;
@@ -54,7 +87,7 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			// Add the gravity.
 			if (!IsOnFloor())
 			{
-				velocity.Y += gravity * (float)delta;
+				velocity.Y += BaseLevel.Gravity * (float)delta;
 				if (velocity.Y > 0)
 				{
 					AnimatedSprite2D.Play("Fall");

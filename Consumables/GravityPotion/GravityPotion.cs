@@ -2,13 +2,18 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class Consumable : Area2D
+public partial class GravityPotion : Area2D
 {
+	private bool PickedUp = false;
+
 	private void _on_body_entered(Node2D body)
 	{
-		if (body is PlayableCharacter)
+		if (body is PlayableCharacter && !PickedUp)
 		{
-			BaseLevel.CoinCounter += (int)GetMeta("Value");
+			PickedUp = true;
+
+			//((PlayableCharacter)body).GravitySwapped = !((PlayableCharacter)body).GravitySwapped;
+			BaseLevel.Gravity *= -1;
 
 			Tween tweenPosition = GetTree().CreateTween();
 			Tween tweenTransparency = GetTree().CreateTween();
@@ -25,5 +30,3 @@ public partial class Consumable : Area2D
 		QueueFree();
 	}
 }
-
-

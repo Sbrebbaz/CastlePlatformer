@@ -9,6 +9,7 @@ distance = -633.0
 script = ExtResource("1_0iwlf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -632)
 shape = SubResource("WorldBoundaryShape2D_et13o")
 debug_color = Color(0.988235, 0, 0, 0.419608)
 

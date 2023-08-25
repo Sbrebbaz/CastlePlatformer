@@ -20,8 +20,7 @@ public partial class BreakableWall : Node2D, Breakable
 			Tween tween = CreateTween();
 			tween.Finished += TweenPosition_Finished;
 
-			tween.TweenProperty(this, "modulate:a", 0, 1f);
-
+			tween.TweenProperty(this, "modulate:a", 0, 0.2f);
 
 		}
 	}

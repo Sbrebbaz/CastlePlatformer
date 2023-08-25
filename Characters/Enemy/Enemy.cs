@@ -92,7 +92,7 @@ public partial class Enemy : CharacterBody2D, Killable
 
 	private void _on_player_detection_body_exited(Node2D body)
 	{
-		if (body.Name == "Player")
+		if (body is PlayableCharacter)
 		{
 			Player = null;
 		}
@@ -101,7 +101,7 @@ public partial class Enemy : CharacterBody2D, Killable
 
 	private void _on_kill_detection_body_entered(Node2D body)
 	{
-		if (body.Name == "Player" && !IsDead)
+		if (body is PlayableCharacter && !IsDead)
 		{
 			IsAttacking = false;
 			IsDead = true;
@@ -124,7 +124,9 @@ public partial class Enemy : CharacterBody2D, Killable
 
 	private void _on_attack_detection_body_entered(Node2D body)
 	{
-		if (body.Name == "Player")
+		if (body is PlayableCharacter
+			&& body is Killable
+			&& !((PlayableCharacter)body).IsDead)
 		{
 			IsAttacking = true;
 		}
@@ -133,7 +135,7 @@ public partial class Enemy : CharacterBody2D, Killable
 
 	private void _on_attack_detection_body_exited(Node2D body)
 	{
-		if (body.Name == "Player")
+		if (body is PlayableCharacter)
 		{
 			IsAttacking = false;
 		}
