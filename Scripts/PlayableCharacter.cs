@@ -7,8 +7,9 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 	public float WalkSpeed = 50f;
 	public float BaseSpeed = 200f;
 	public float RunSpeed = 400f;
+	public float PushForce = 250f;
 
-	public float JumpVelocityBase = -400.0f;
+	public float JumpVelocityBase = -280.0f;
 
 	public float JumpVelocity
 	{
@@ -63,13 +64,15 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			{
 				case > 0:
 					{
-						AnimatedSprite2D.FlipV = false;
+						RotationDegrees = 0;
+						//AnimatedSprite2D.FlipV = false;
 						UpDirection = new Vector2(0, -1);
 						break;
 					}
 				case < 0:
 					{
-						AnimatedSprite2D.FlipV = true;
+						RotationDegrees = 180;
+						//AnimatedSprite2D.FlipV = true;
 						UpDirection = new Vector2(0, 1);
 						break;
 					}
@@ -115,12 +118,12 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			{
 				case > 0:
 					{
-						AnimatedSprite2D.FlipH = false;
+						AnimatedSprite2D.FlipH = (GravityModifier < 0);
 						break;
 					}
 				case < 0:
 					{
-						AnimatedSprite2D.FlipH = true;
+						AnimatedSprite2D.FlipH = (GravityModifier > 0);
 						break;
 					}
 			}
@@ -143,7 +146,21 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			}
 
 			Velocity = velocity;
-			MoveAndSlide();
+
+			if (MoveAndSlide())
+			{
+				for (int i = 0; i < GetSlideCollisionCount(); i++)
+				{
+					KinematicCollision2D collision = GetSlideCollision(i);
+					if (collision.GetCollider() is Box)
+					{
+						((Box)collision.GetCollider()).ApplyForce(collision.GetNormal() * -PushForce);
+
+					}
+
+				}
+			}
+
 		}
 	}
 

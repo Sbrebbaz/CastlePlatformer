@@ -25,6 +25,7 @@ public partial class Bomb : CharacterBody2D
 
 		foreach (Node2D node2D in ExplosionArea.GetOverlappingBodies().ToList())
 		{
+			Debug.WriteLine(node2D);
 			if (node2D is Killable)
 			{
 				((Killable)node2D).Kill();

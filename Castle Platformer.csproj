@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>CastlePlatformer</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Characters\Box\" />
+  </ItemGroup>
 </Project>
