@@ -5,6 +5,7 @@
     <RootNamespace>CastlePlatformer</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Characters\Box\" />
+    <Compile Remove="Characters\**" />
+    <EmbeddedResource Remove="Characters\**" />
   </ItemGroup>
 </Project>

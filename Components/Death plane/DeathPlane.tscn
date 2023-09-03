@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwh8frsnwe7d6"]
+
+[ext_resource type="Script" path="res://Components/Death plane/DeathPlane.cs" id="1_0iwlf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_et13o"]
+distance = -633.0
+
+[node name="DeathPlane" type="Area2D"]
+script = ExtResource("1_0iwlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -632)
+shape = SubResource("WorldBoundaryShape2D_et13o")
+debug_color = Color(0.988235, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

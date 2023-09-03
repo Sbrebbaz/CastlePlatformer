@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Castle Platformer"
-run/main_scene="res://MainMenu/MainMenu.tscn"
+run/main_scene="res://Main menu/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
 run/show_image=true
