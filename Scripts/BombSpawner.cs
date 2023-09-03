@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 public partial class BombSpawner : Node
 {
-	private PackedScene bomb = GD.Load<PackedScene>("res://Characters/Bomb/Bomb.tscn");
+	private PackedScene bomb = GD.Load<PackedScene>("res://Components/Bomb/Bomb.tscn");
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

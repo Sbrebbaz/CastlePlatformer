@@ -60,7 +60,7 @@ animations = [{
 size = Vector2(16, 32)
 
 [node name="GravityDoor" type="AnimatedSprite2D"]
-modulate = Color(0.729412, 0.913725, 0.956863, 1)
+modulate = Color(0.184314, 0.913725, 0.956863, 1)
 sprite_frames = SubResource("SpriteFrames_jabxv")
 animation = &"Idle"
 autoplay = "Idle"

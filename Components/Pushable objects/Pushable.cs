@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class Pushable : RigidBody2D, Breakable
+public partial class Pushable : RigidBody2D
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -14,9 +14,9 @@ public partial class Pushable : RigidBody2D, Breakable
 	{
 	}
 
-	public void Break()
-	{
-		Debug.WriteLine("Pushable Broken");
-		QueueFree();
-	}
+	//public void Break()
+	//{
+	//	Debug.WriteLine("Pushable Broken");
+	//	QueueFree();
+	//}
 }
