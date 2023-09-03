@@ -15,16 +15,8 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 	{
 		get
 		{
-			return JumpVelocityBase * GravityModifier;
+			return JumpVelocityBase * BaseLevel.GravityModifier;
 
-		}
-	}
-
-	public int GravityModifier
-	{
-		get
-		{
-			return (BaseLevel.Gravity > 0) ? 1 : -1;
 		}
 	}
 
@@ -60,7 +52,7 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			Vector2 velocity = Velocity;
 			float movementSpeed = BaseSpeed;
 
-			switch (GravityModifier)
+			switch (BaseLevel.GravityModifier)
 			{
 				case > 0:
 					{
@@ -118,12 +110,12 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 			{
 				case > 0:
 					{
-						AnimatedSprite2D.FlipH = (GravityModifier < 0);
+						AnimatedSprite2D.FlipH = (BaseLevel.GravityModifier < 0);
 						break;
 					}
 				case < 0:
 					{
-						AnimatedSprite2D.FlipH = (GravityModifier > 0);
+						AnimatedSprite2D.FlipH = (BaseLevel.GravityModifier > 0);
 						break;
 					}
 			}
@@ -152,9 +144,9 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 				for (int i = 0; i < GetSlideCollisionCount(); i++)
 				{
 					KinematicCollision2D collision = GetSlideCollision(i);
-					if (collision.GetCollider() is Box)
+					if (collision.GetCollider() is Pushable)
 					{
-						((Box)collision.GetCollider()).ApplyForce(collision.GetNormal() * -PushForce);
+						((Pushable)collision.GetCollider()).ApplyForce(collision.GetNormal() * -PushForce);
 
 					}
 
@@ -174,7 +166,10 @@ public partial class PlayableCharacter : CharacterBody2D, Killable
 
 	private void _on_tree_exiting()
 	{
-		GetTree().ChangeSceneToFile("res://DeathScreen.tscn");
+		if (IsDead)
+		{
+			GetTree().ChangeSceneToFile("res://DeathScreen.tscn");
+		}
 	}
 
 	public void Kill()

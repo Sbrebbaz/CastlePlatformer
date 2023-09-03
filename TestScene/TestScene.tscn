@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://cc16r1t1krhb7"]
+[gd_scene load_steps=30 format=3 uid="uid://cc16r1t1krhb7"]
 
 [ext_resource type="Script" path="res://TestScene/TestScene.cs" id="1_3c3le"]
 [ext_resource type="Texture2D" uid="uid://wq8ajtvuw14x" path="res://Assets/Dungeon Tile Set/Dungeon Tile Set.png" id="1_k4xtl"]
 [ext_resource type="PackedScene" uid="uid://0t7gwsfhdf6j" path="res://Characters/Knight/Knight_1/Player.tscn" id="2_1cjg6"]
 [ext_resource type="PackedScene" uid="uid://cql3klau1qao5" path="res://Consumables/GoldCoin.tscn" id="3_rpqqr"]
 [ext_resource type="Script" path="res://TestScene/CoinCounter.cs" id="4_6ony8"]
+[ext_resource type="PackedScene" uid="uid://n7a321r7nf6o" path="res://ResetLevel/ResetLevel.tscn" id="4_s7s8v"]
 [ext_resource type="PackedScene" uid="uid://bwh8frsnwe7d6" path="res://DeathPlane.tscn" id="5_b2aek"]
 [ext_resource type="PackedScene" uid="uid://c7btebqnuvrqc" path="res://Characters/Enemy/Enemy.tscn" id="6_ikmr1"]
 [ext_resource type="PackedScene" uid="uid://dhq1axv7jrauk" path="res://Consumables/AzureGem.tscn" id="6_n7ans"]
@@ -23,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://bp3v2sn00rtnq" path="res://Characters/Box/Box.tscn" id="21_10s7v"]
 [ext_resource type="PackedScene" uid="uid://bgjak566m0st8" path="res://Characters/Door/Door.tscn" id="22_l1mk5"]
 [ext_resource type="PackedScene" uid="uid://b5ct6iieqa0jm" path="res://Characters/Sign/Sign.tscn" id="23_566lm"]
+[ext_resource type="PackedScene" uid="uid://sx2f5d03ud8a" path="res://Characters/Box/Barrel.tscn" id="24_sogog"]
+[ext_resource type="PackedScene" uid="uid://c80b1q88416va" path="res://Characters/Box/Vase.tscn" id="25_kqak1"]
+[ext_resource type="PackedScene" uid="uid://bkils1ty52gwx" path="res://Characters/GravityDoor/GravityDoor.tscn" id="26_83ah6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kberm"]
 texture = ExtResource("1_k4xtl")
@@ -490,39 +494,39 @@ rotation = 3.14159
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("6_n7ans")]
-position = Vector2(192, 480)
+position = Vector2(736, 480)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("3_rpqqr")]
-position = Vector2(120, 480)
+position = Vector2(664, 480)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("8_q50p2")]
-position = Vector2(168, 480)
+position = Vector2(712, 480)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("9_67fa3")]
-position = Vector2(240, 480)
+position = Vector2(784, 480)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("10_n3fis")]
-position = Vector2(144, 480)
+position = Vector2(688, 480)
 
 [node name="Coin6" parent="Coins" instance=ExtResource("11_77k4y")]
-position = Vector2(464, 352)
+position = Vector2(1008, 352)
 
 [node name="Coin7" parent="Coins" instance=ExtResource("12_8qvub")]
-position = Vector2(96, 480)
+position = Vector2(640, 480)
 
 [node name="Coin8" parent="Coins" instance=ExtResource("13_wiwrm")]
-position = Vector2(216, 480)
+position = Vector2(760, 480)
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("6_ikmr1")]
-position = Vector2(576, 472)
+position = Vector2(1120, 472)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_ikmr1")]
-position = Vector2(696, 472)
+position = Vector2(1240, 472)
 
 [node name="Enemy" parent="." instance=ExtResource("6_ikmr1")]
-position = Vector2(880, 472)
+position = Vector2(1424, 472)
 
 [node name="Bombs" type="Node" parent="."]
 script = ExtResource("15_fixll")
@@ -531,19 +535,19 @@ script = ExtResource("15_fixll")
 position = Vector2(32, 480)
 
 [node name="BreakableWall" parent="." instance=ExtResource("15_wn8qg")]
-position = Vector2(288, 416)
+position = Vector2(832, 416)
 
 [node name="BreakableWall2" parent="." instance=ExtResource("15_wn8qg")]
-position = Vector2(256, 416)
+position = Vector2(800, 416)
 
 [node name="BreakableWall3" parent="." instance=ExtResource("15_wn8qg")]
-position = Vector2(320, 416)
+position = Vector2(864, 416)
 
 [node name="Trampoline" parent="." instance=ExtResource("16_l84gl")]
 position = Vector2(400, 504)
 
 [node name="VanishWall" parent="." instance=ExtResource("17_ga8ar")]
-position = Vector2(464, 392)
+position = Vector2(1008, 392)
 
 [node name="Spike" parent="." instance=ExtResource("18_tcu4v")]
 position = Vector2(512, 496)
@@ -559,7 +563,7 @@ position = Vector2(56, 224)
 rotation = 3.14159
 
 [node name="Box" parent="." instance=ExtResource("21_10s7v")]
-position = Vector2(48, 488)
+position = Vector2(592, 488)
 
 [node name="Doors" type="Node" parent="."]
 
@@ -574,5 +578,25 @@ position = Vector2(288, 488)
 metadata/Text = "This is a test sign"
 
 [node name="Sign2" parent="." instance=ExtResource("23_566lm")]
-position = Vector2(408, 360)
+position = Vector2(952, 360)
 metadata/Text = "HELLO :D"
+
+[node name="Barrel" parent="." instance=ExtResource("24_sogog")]
+position = Vector2(72, 488)
+
+[node name="Box2" parent="." instance=ExtResource("21_10s7v")]
+position = Vector2(112, 456)
+
+[node name="Vase" parent="." instance=ExtResource("25_kqak1")]
+position = Vector2(152, 416)
+
+[node name="GravityDoors" type="Node" parent="."]
+
+[node name="Door" parent="GravityDoors" instance=ExtResource("26_83ah6")]
+position = Vector2(216, 480)
+
+[node name="Door2" parent="GravityDoors" instance=ExtResource("26_83ah6")]
+position = Vector2(216, 216)
+rotation = -3.14159
+
+[node name="ResetLevel" parent="." instance=ExtResource("4_s7s8v")]

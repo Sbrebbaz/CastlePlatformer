@@ -13,7 +13,7 @@ public partial class GravityPotion : Area2D
 			PickedUp = true;
 
 			//((PlayableCharacter)body).GravitySwapped = !((PlayableCharacter)body).GravitySwapped;
-			BaseLevel.Gravity *= -1;
+			BaseLevel.SwapPlayerGravity();
 
 			Tween tweenPosition = GetTree().CreateTween();
 			Tween tweenTransparency = GetTree().CreateTween();

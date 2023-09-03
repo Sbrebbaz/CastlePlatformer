@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp3v2sn00rtnq"]
+[gd_scene load_steps=6 format=3 uid="uid://sx2f5d03ud8a"]
 
-[ext_resource type="Texture2D" uid="uid://wq8ajtvuw14x" path="res://Assets/Dungeon Tile Set/Dungeon Tile Set.png" id="1_gvfrg"]
-[ext_resource type="Script" path="res://Characters/Box/Pushable.cs" id="1_tmhxi"]
+[ext_resource type="Script" path="res://Characters/Box/Pushable.cs" id="1_vhd5t"]
+[ext_resource type="Texture2D" uid="uid://wq8ajtvuw14x" path="res://Assets/Dungeon Tile Set/Dungeon Tile Set.png" id="2_8nwlw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q54qi"]
-texture = ExtResource("1_gvfrg")
+texture = ExtResource("2_8nwlw")
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -145,16 +145,16 @@ sources/0 = SubResource("TileSetAtlasSource_q54qi")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0ked"]
 size = Vector2(16, 16)
 
-[node name="Box" type="RigidBody2D"]
+[node name="Barrel" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 7
 mass = 10.0
-script = ExtResource("1_tmhxi")
+script = ExtResource("1_vhd5t")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_arm6i")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65536, 655360, 10)
+layer_0/tile_data = PackedInt32Array(-65536, 655360, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -8)
