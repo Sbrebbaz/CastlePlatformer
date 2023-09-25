@@ -15,7 +15,7 @@ public partial class MainMenu : Node2D
 
 	private void _on_play_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Levels//Test level//Test_Level.tscn");
+		GetTree().ChangeSceneToFile("res://Levels/1/L1.tscn");
 	}
 
 

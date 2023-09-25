@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://byt2yinltnldg" path="res://Components/Consumables/SilverCoin.tscn" id="12_oorsp"]
 [ext_resource type="PackedScene" uid="uid://3fi11owawrn6" path="res://Components/Consumables/YellowGem.tscn" id="13_i20ic"]
 [ext_resource type="PackedScene" uid="uid://bgjak566m0st8" path="res://Components/Door/Door.tscn" id="14_i6584"]
-[ext_resource type="PackedScene" uid="uid://c7btebqnuvrqc" path="res://Components/Enemy/Enemy.tscn" id="15_n2lsv"]
+[ext_resource type="PackedScene" uid="uid://c7btebqnuvrqc" path="res://Components/Enemy/Knight.tscn" id="15_n2lsv"]
 [ext_resource type="PackedScene" uid="uid://c3l50aje4l11a" path="res://Components/Gravity door/GravityDoor.tscn" id="16_iu513"]
 [ext_resource type="PackedScene" uid="uid://durb3l2w7t7ny" path="res://Components/GravityPotion/GravityPotion.tscn" id="17_blgmb"]
 [ext_resource type="PackedScene" uid="uid://sx2f5d03ud8a" path="res://Components/Pushable objects/Barrel.tscn" id="18_4kahg"]

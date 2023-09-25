@@ -1,3 +1,4 @@
+using CastlePlatformer;
 using Godot;
 using System;
 using static CastlePlatformer.BaseLevelConstants;
@@ -19,5 +20,14 @@ public partial class BaseLevel : Node
 			return (Gravity > 0) ? 1 : -1;
 		}
 	}
+
+	public static void InitializeBaseLevelValues()
+    {
+        //Reset gravity
+        Gravity = DefaultGravity;
+
+        //Reset coin counter
+        CoinCounter = 0;
+    }
 
 }
