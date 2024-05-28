@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhtrk2dkck2ew"]
+
+[ext_resource type="Script" path="res://Components/UI/CoinCounter/CoinCounter.cs" id="1_iosql"]
+
+[node name="CoinCounter" type="Label"]
+script = ExtResource("1_iosql")
